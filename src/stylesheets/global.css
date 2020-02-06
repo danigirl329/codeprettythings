@@ -1,0 +1,12 @@
+@tailwind base;
+
+h1, h2, h3, h4, h5 {
+    @apply font-cursive;
+    @apply font-bold;
+    @apply text-4xl;
+    @apply mb-2;
+}
+
+@tailwind components;
+
+@tailwind utilities;
