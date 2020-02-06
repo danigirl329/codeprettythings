@@ -3,6 +3,7 @@ module.exports = {
     title: `CodePrettyThings`,
     description: `A sassy frontend developer who loves code, coffee, and puggles.`,
     author: `@danigirl329`,
+    pathPrefix: "/codeprettythings",
   },
   plugins: [
     `gatsby-plugin-postcss`,
