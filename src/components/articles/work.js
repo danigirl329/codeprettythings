@@ -13,24 +13,24 @@ const Work = ({ children }) => {
         <h1 class="text-center">What I've Done</h1>
         <div class="flex flex-wrap">
           <div class="md:flex-1 mr-5">
-            <a href="https://trustarts.org">
+            <a href="https://trustarts.org" target="_blank">
               <img src={pctHomepage} alt="trustarts.org homepage" />
             </a>
           </div>
           <div class="md:flex-1">
-            <a href="https://traf.trustarts.org">
+            <a href="https://traf.trustarts.org" target="_blank">
               <img src={trafHomepage} alt="traf.trustarts.org homepage" />
             </a>
           </div>
         </div>
         <div class="flex flex-wrap">
           <div class="md:flex-1 mr-5">
-            <a href="https://parkpgh.org">
+            <a href="https://parkpgh.org" target="_blank">
               <img src={parkPGHHomepage} alt="parkpgh.org homepage" />
             </a>
           </div>
           <div class="md:flex-1">
-            <a href="https://ppt.org">
+            <a href="https://ppt.org" target="_blank">
               <img src={pptHomepage} alt="ppt.org homepage" />
             </a>
           </div>
