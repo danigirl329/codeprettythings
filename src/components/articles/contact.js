@@ -10,9 +10,9 @@ const Contact = ({ children }) => {
         <article class="container m-auto max-w-md min-h-screen" id="contact">
         <h1 class="text-center">Where You Can Find Me</h1>
         <img class="max-w-md" src={contactMe} alt="woman in computer" />
-        <div class="text-center text-gray-600 text-6xl">
-          <span class="mx-2"><a href="https://linkedin.com"><FontAwesomeIcon icon={faLinkedinIn} /></a></span> 
-          <span class="mx-2"><a href="https://instagram.com"><FontAwesomeIcon icon={faInstagram} /></a></span>
+        <div class="text-center text-gray-600 text-5xl">
+          <span class="mx-2"><a href="https://www.linkedin.com/in/danigreaves"><FontAwesomeIcon icon={faLinkedinIn} /></a></span> 
+          <span class="mx-2"><a href="https://instagram.com/_danigirl329_/"><FontAwesomeIcon icon={faInstagram} /></a></span>
           <span class="mx-2"><a href="https://github.com/danigirl329"><FontAwesomeIcon icon={faGithub} /></a></span>
         </div>
       </article>
