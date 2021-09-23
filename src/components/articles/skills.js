@@ -1,5 +1,6 @@
 import React from "react"
 import PropTypes from "prop-types"
+import SkillsBlock from "../skills_block"
 import skillsImg from "../../images/skills_image.svg"
 
 const Skills = ({ children }) => {
@@ -9,39 +10,9 @@ const Skills = ({ children }) => {
         <h1 class="text-center">What I Can Do</h1>
         <img class="max-w-xs m-auto" src={skillsImg} alt="illustration of woman at computer" />
         <div class="min-w-2xl mr-2 -ml-2 flex flex-wrap">
-          <div class="flex-1 border border-green-200 p-2 m-2">
-            <h2 class="">Basics</h2>
-            <ul class="">
-              <li>HTML5</li>
-              <li>CSS/Sass</li>
-              <li>Webpacker</li>
-              <li>Npm/Yarn</li>
-              <li>Sketch</li>
-              <li>Photoshop</li>
-            </ul>
-          </div>
-          <div class="flex-1 border border-green-200 p-2 m-2">
-            <h2 class="">Extras</h2>
-            <ul class="">
-              <li>Google Tag Manager</li>
-              <li>Google Analytics</li>
-              <li>Performance</li>
-              <li>Accessibility</li>
-              <li>UX/UI Testing</li>
-              <li>HTML Email Templating</li>
-              <li>AWS EC2, CodePipeline, CodeDeploy, Cloudfront</li>
-            </ul>
-          </div>
-          <div class="flex-1 border border-green-200 p-2 m-2">
-            <h2 class="">Frameworks</h2>
-            <ul class="">
-              <li>Ruby on Rails</li>
-              <li>StimulusJS</li>
-              <li>ASP.Net</li>
-              <li>Gatsby</li>
-              <li>TailwindCSS</li>
-            </ul>
-          </div>
+          <SkillsBlock title="Basics" skills="HTML5,CSS/Sass,Webpacker,Npm/Yarn,Sketch,Photoshop"></SkillsBlock>
+          <SkillsBlock title="Extras" skills="Google Tag Manager,Google Analytics,Performance,Accessibility,UX/UI Testing,AWS EC2, CodePipeline, CodeDeploy, Cloudfront"></SkillsBlock>
+          <SkillsBlock title="Frameworks" skills="Ruby on Rails,StimulusJS,ASP.Net,Gatsby,TailwindCSS"></SkillsBlock>
         </div>
       </article>
         </>
