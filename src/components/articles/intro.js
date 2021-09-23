@@ -3,11 +3,11 @@ import PropTypes from "prop-types"
 import me from "../../images/me.png"
 
 const Intro = ({ children }) => {
-  var hobbies = ["coffee enthusiast", "dog cuddler", "gravel biker"]
+  var hobbies = ["coffee enthusiast", "dog cuddler", "biker", "vespa lover", "camper", "hiker", "runner"]
   const [seconds, setSeconds] = useState(0)
   useEffect(() => {
     const interval = setInterval(() => {
-      setSeconds(second => (second === 2 ? 0 : second + 1));
+      setSeconds(second => (second === 6 ? 0 : second + 1));
     }, 2000);
     return () => clearInterval(interval);
     }, []);
