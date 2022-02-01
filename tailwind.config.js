@@ -2,8 +2,8 @@ module.exports = {
   theme: {
     extend: {
       fontFamily: {
-        sans: ['Montserrat', 'sans'],
-        cursive: ['Bubblegum Sans', 'cursive'],
+        'montserrat': ['Montserrat Light', 'sans-serif'],
+        'lora': ['Lora', 'serif'],
       },
       colors: {
         pink: '#FFECEB',

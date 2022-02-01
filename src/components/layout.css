@@ -1,9 +1,10 @@
 html {
-  font-family: sans-serif;
+  font-family: lora;
   -ms-text-size-adjust: 100%;
   -webkit-text-size-adjust: 100%;
 }
 body {
+  font-family: lora;
   margin: 0;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -509,6 +510,7 @@ th {
   font-weight: bold;
 }
 li {
+  font-family: lora;
   margin-bottom: calc(1.45rem / 2);
 }
 ol li {

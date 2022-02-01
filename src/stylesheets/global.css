@@ -1,8 +1,11 @@
 @tailwind base;
 
+body {
+    @apply font-lora;
+}
+
 h1, h2, h3, h4, h5 {
-    @apply font-cursive;
-    @apply font-bold;
+    @apply font-montserrat;
     @apply text-3xl;
     @apply mb-2;
 }

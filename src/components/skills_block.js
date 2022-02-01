@@ -8,8 +8,8 @@ const SkillsBlock = ({ title, skills }) => {
   let skillsList = skillsArray.map((s => <li>{s}</li> ));
   return  (
   <div class="flex-1 border border-green-200 p-2 m-2">
-    <h2>{title}</h2>
-    <ul>{skillsList}</ul>
+    <h2 className="skillsTitle">{title}</h2>
+    <ul className="skillsList">{skillsList}</ul>
   </div>
   )
 }
