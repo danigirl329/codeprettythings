@@ -1,6 +1,0 @@
-node_modules/**/*
-public/**/*
-/.vscode/**/*
-/.cache/**/*
-/.DS_Store
-src/.DS_Store
