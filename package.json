@@ -27,7 +27,7 @@
   },
   "devDependencies": {
     "gh-pages": "^3.2.3",
-    "prettier": "^2.6.1",
+    "prettier": "^2.7.1",
     "tailwindcss": "^1.1.4"
   },
   "keywords": [
