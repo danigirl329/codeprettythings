@@ -3,6 +3,8 @@ require "test_helper"
 class CaseStudiesControllerTest < ActionDispatch::IntegrationTest
   setup do
     @case_study = case_studies(:one)
+    @admin = users(:admin)
+    sign_in_as(@admin)
   end
 
   test "should get index" do
