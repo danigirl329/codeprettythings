@@ -72,9 +72,12 @@
           </nav>
 
           <% if signed_in? %>
-            <div class="mt-6 border-t border-sand-200 pt-5">
-              <%= link_to "Edit case study", edit_case_study_path(@case_study),
+            <div class="mt-6 border-t border-sand-200 pt-5 space-y-3">
+              <%= link_to "Edit this case study", edit_case_study_path(@case_study),
                 class: "inline-flex w-full items-center justify-center rounded-xl bg-rosewood-600 px-4 py-2 text-sm font-medium text-white hover:bg-rosewood-700 focus:outline-none focus:ring-2 focus:ring-rosewood-200" %>
+              <%= link_to "Destroy this case study", @case_study,
+                data: { turbo_method: :delete, turbo_confirm: "Are you sure you want to delete this case study?" },
+                class: "inline-flex w-full items-center justify-center rounded-xl bg-rosewood-50 px-4 py-2 text-sm font-medium text-rosewood-700 ring-1 ring-rosewood-100 hover:bg-rosewood-100" %>
             </div>
           <% end %>
         </div>

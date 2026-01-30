@@ -1,23 +1,23 @@
 # Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  title: MyString
-  slug: MyString
+  title: First Project
+  slug: first-project
   summary: MyText
-  role: MyString
-  client: MyString
-  tech_stack: MyText
-  results: MyText
-  featured: false
-  published_at: 2026-01-28 22:03:01
+  role: Lead Developer
+  client: Acme Co
+  tech_stack: Ruby, Rails, Postgres
+  results: Doubled conversions
+  featured: true
+  published_at: 2023-01-01 12:00:00
 
 two:
-  title: MyString
-  slug: MyString
+  title: Second Project
+  slug: second-project
   summary: MyText
-  role: MyString
-  client: MyString
-  tech_stack: MyText
-  results: MyText
+  role: Product Engineer
+  client: Globex
+  tech_stack: Hotwire, Tailwind
+  results: Faster onboarding
   featured: false
-  published_at: 2026-01-28 22:03:01
+  published_at: 2023-06-01 12:00:00
