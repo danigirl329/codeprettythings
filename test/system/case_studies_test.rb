@@ -3,6 +3,7 @@ require "application_system_test_case"
 class CaseStudiesTest < ApplicationSystemTestCase
   setup do
     @case_study = case_studies(:one)
+    @admin = users(:admin)
   end
 
   test "visiting the index" do
@@ -11,6 +12,7 @@ class CaseStudiesTest < ApplicationSystemTestCase
   end
 
   test "should create case study" do
+    sign_in_as(@admin)
     visit case_studies_url
     click_on "New case study"
 
@@ -26,10 +28,11 @@ class CaseStudiesTest < ApplicationSystemTestCase
     click_on "Create Case study"
 
     assert_text "Case study was successfully created"
-    click_on "Back"
+    click_on "Back to project", match: :first
   end
 
   test "should update Case study" do
+    sign_in_as(@admin)
     visit case_study_url(@case_study)
     click_on "Edit this case study", match: :first
 
@@ -45,10 +48,11 @@ class CaseStudiesTest < ApplicationSystemTestCase
     click_on "Update Case study"
 
     assert_text "Case study was successfully updated"
-    click_on "Back"
+    click_on "Back to project", match: :first
   end
 
   test "should destroy Case study" do
+    sign_in_as(@admin)
     visit case_study_url(@case_study)
     accept_confirm { click_on "Destroy this case study", match: :first }
 

@@ -73,8 +73,11 @@
             <% end %>
 
             <% if signed_in? %>
-              <%= link_to "Edit project", edit_project_path(@project),
+              <%= link_to "Edit this project", edit_project_path(@project),
                 class: "inline-flex items-center rounded-xl bg-white px-5 py-2.5 text-sm font-medium text-ink-900 ring-1 ring-sand-200 hover:ring-sand-300" %>
+              <%= link_to "Destroy this project", @project,
+                data: { turbo_method: :delete, turbo_confirm: "Are you sure you want to delete this project?" },
+                class: "inline-flex items-center rounded-xl bg-rosewood-50 px-5 py-2.5 text-sm font-medium text-rosewood-700 ring-1 ring-rosewood-100 hover:bg-rosewood-100" %>
             <% end %>
           </div>
         </div>

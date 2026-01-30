@@ -3,6 +3,7 @@ require "application_system_test_case"
 class ProjectsTest < ApplicationSystemTestCase
   setup do
     @project = projects(:one)
+    @admin = users(:admin)
   end
 
   test "visiting the index" do
@@ -11,6 +12,7 @@ class ProjectsTest < ApplicationSystemTestCase
   end
 
   test "should create project" do
+    sign_in_as(@admin)
     visit projects_url
     click_on "New project"
 
@@ -19,7 +21,7 @@ class ProjectsTest < ApplicationSystemTestCase
     fill_in "Published at", with: @project.published_at
     fill_in "Results", with: @project.results
     fill_in "Role", with: @project.role
-    fill_in "Slug", with: @project.slug
+    fill_in "Slug", with: "#{@project.slug}-new"
     fill_in "Summary", with: @project.summary
     fill_in "Tech stack", with: @project.tech_stack
     fill_in "Title", with: @project.title
@@ -30,6 +32,7 @@ class ProjectsTest < ApplicationSystemTestCase
   end
 
   test "should update Project" do
+    sign_in_as(@admin)
     visit project_url(@project)
     click_on "Edit this project", match: :first
 
@@ -49,6 +52,7 @@ class ProjectsTest < ApplicationSystemTestCase
   end
 
   test "should destroy Project" do
+    sign_in_as(@admin)
     visit project_url(@project)
     accept_confirm { click_on "Destroy this project", match: :first }
 
