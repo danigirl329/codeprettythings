@@ -1,0 +1,202 @@
+<div class="min-h-screen bg-sand-50">
+  <div class="mx-auto max-w-6xl px-6 py-14">
+    <!-- Header -->
+    <div class="flex flex-col gap-6 md:flex-row md:items-end md:justify-between">
+      <div class="max-w-2xl">
+        <p class="text-sm font-medium text-rosewood-700">Selected work</p>
+        <h1 class="mt-2 text-3xl font-semibold tracking-tight text-ink-900 sm:text-4xl">
+          Projects that shipped
+        </h1>
+        <p class="mt-3 text-base leading-relaxed text-ink-700">
+          A small collection of full-stack Rails work — modernizations, performance wins, and product features.
+          Each project includes context, decisions, and results.
+        </p>
+      </div>
+
+      <div class="flex items-center gap-3">
+        <% if signed_in? %>
+          <%= link_to "New Project", new_project_path,
+            class: "inline-flex items-center rounded-xl bg-rosewood-600 px-4 py-2 text-sm font-medium text-white hover:bg-rosewood-700 focus:outline-none focus:ring-2 focus:ring-rosewood-300" %>
+        <% end %>
+
+        <%= link_to "All case studies", case_studies_path,
+          class: "inline-flex items-center rounded-xl bg-white px-4 py-2 text-sm font-medium text-ink-900 ring-1 ring-sand-200 hover:ring-sand-300" %>
+      </div>
+    </div>
+
+    <!-- Filters (UI is ready; wiring can come later with Stimulus) -->
+    <div
+      class="mt-10 rounded-2xl bg-white p-4 ring-1 ring-sand-200"
+      data-controller="project-filters"
+    >
+      <div class="grid gap-3 md:grid-cols-12 md:items-center">
+        <div class="md:col-span-6">
+          <label class="sr-only" for="project-search">Search projects</label>
+          <input
+            id="project-search"
+            type="text"
+            placeholder="Search by title, role, or tech…"
+            class="w-full rounded-xl border border-sand-200 bg-sand-50 px-4 py-2 text-sm text-ink-900 placeholder:text-ink-500 focus:border-rosewood-300 focus:outline-none focus:ring-2 focus:ring-rosewood-200"
+            data-project-filters-target="search"
+            data-action="input->project-filters#search"
+          />
+        </div>
+
+        <div class="md:col-span-3">
+          <label class="sr-only" for="tech-filter">Tech</label>
+          <select
+            id="tech-filter"
+            class="w-full rounded-xl border border-sand-200 bg-white px-4 py-2 text-sm text-ink-900 focus:border-rosewood-300 focus:outline-none focus:ring-2 focus:ring-rosewood-200"
+            data-project-filters-target="tech"
+            data-action="change->project-filters#tech"
+
+          >
+            <option value="">All tech</option>
+            <%# Populate later from your data if you want - leaving as placeholder %>
+            <option>Rails</option>
+            <option>Postgres</option>
+            <option>Stimulus</option>
+            <option>Sidekiq</option>
+            <option>AWS</option>
+          </select>
+        </div>
+
+        <div class="md:col-span-3 md:flex md:justify-end">
+          <label class="inline-flex select-none items-center gap-2 rounded-xl bg-sand-50 px-3 py-2 text-sm text-ink-800 ring-1 ring-sand-200">
+            <input
+              type="checkbox"
+              class="h-4 w-4 rounded border-sand-300 text-rosewood-600 focus:ring-rosewood-200"
+              data-project-filters-target="featuredOnly"
+              data-action="change->project-filters#featuredOnly"
+
+            />
+            Featured only
+          </label>
+        </div>
+      </div>
+    </div>
+
+    <!-- Featured -->
+    <% if @featured_projects.any? %>
+      <div class="mt-12">
+        <div class="flex items-end justify-between">
+          <h2 class="text-lg font-semibold text-ink-900">Featured</h2>
+          <p class="text-sm text-ink-600">The 3 I’d show first in an interview.</p>
+        </div>
+
+        <div class="mt-4 grid gap-6 md:grid-cols-3">
+          <% @featured_projects.each do |project| %>
+            <%= link_to project_path(project),
+              class: "group rounded-2xl bg-white p-6 ring-1 ring-sand-200 transition hover:-translate-y-0.5 hover:ring-sand-300 hover:shadow-soft focus:outline-none focus:ring-2 focus:ring-rosewood-200",
+              data: { project_filters_target: "card", tech: tech_stack_list(project).join(" "), featured: "true" } do %>
+
+              <div class="flex items-start justify-between gap-4">
+                <div>
+                  <p class="text-xs font-medium text-rosewood-700">Featured</p>
+                  <h3 class="mt-2 text-lg font-semibold tracking-tight text-ink-900 group-hover:text-ink-900">
+                    <%= project.title %>
+                  </h3>
+                </div>
+                <span class="inline-flex items-center rounded-full bg-sand-100 px-2.5 py-1 text-xs font-medium text-ink-700 ring-1 ring-sand-200">
+                  <%= project.role.presence || "Full-stack" %>
+                </span>
+              </div>
+
+              <p class="mt-3 text-sm leading-relaxed text-ink-700">
+                <%= truncate(project.summary.to_s, length: 160) %>
+              </p>
+
+              <% tech = tech_stack_list(project).first(5) %>
+              <% if tech.any? %>
+                <div class="mt-5 flex flex-wrap gap-2">
+                  <% tech.each do |tag| %>
+                    <span class="inline-flex items-center rounded-full bg-sand-50 px-2.5 py-1 text-xs font-medium text-ink-700 ring-1 ring-sand-200">
+                      <%= tag %>
+                    </span>
+                  <% end %>
+                </div>
+              <% end %>
+
+              <div class="mt-6 flex items-center justify-between">
+                <span class="text-sm font-medium text-rosewood-700">
+                  View case study →
+                </span>
+
+                <% if project.published_at.present? %>
+                  <span class="text-xs text-ink-500">
+                    <%= project.published_at.to_date.strftime("%b %Y") %>
+                  </span>
+                <% end %>
+              </div>
+            <% end %>
+          <% end %>
+        </div>
+      </div>
+    <% end %>
+
+    <!-- All Projects -->
+    <div class="mt-14">
+      <div class="flex items-end justify-between">
+        <h2 class="text-lg font-semibold text-ink-900">All projects</h2>
+        <p class="text-sm text-ink-600"><%= @projects.size %> total</p>
+      </div>
+
+      <div class="mt-4 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+        <% @projects.each do |project| %>
+          <%= link_to project_path(project),
+            class: "group rounded-2xl bg-white p-6 ring-1 ring-sand-200 transition hover:-translate-y-0.5 hover:ring-sand-300 hover:shadow-soft focus:outline-none focus:ring-2 focus:ring-rosewood-200",
+            data: { project_filters_target: "card", tech: tech_stack_list(project).join(" "), featured: project.featured? ? "true" : "false" } do %>
+
+            <div class="flex items-start justify-between gap-4">
+              <h3 class="text-base font-semibold tracking-tight text-ink-900">
+                <%= project.title %>
+              </h3>
+
+              <% if project.featured? %>
+                <span class="inline-flex items-center rounded-full bg-rosewood-50 px-2.5 py-1 text-xs font-medium text-rosewood-700 ring-1 ring-rosewood-100">
+                  Featured
+                </span>
+              <% end %>
+            </div>
+
+            <p class="mt-3 text-sm leading-relaxed text-ink-700">
+              <%= truncate(project.summary.to_s, length: 150) %>
+            </p>
+
+            <div class="mt-5 flex flex-wrap items-center gap-2">
+              <% tech_stack_list(project).first(4).each do |tag| %>
+                <span class="inline-flex items-center rounded-full bg-sand-50 px-2.5 py-1 text-xs font-medium text-ink-700 ring-1 ring-sand-200">
+                  <%= tag %>
+                </span>
+              <% end %>
+
+              <% extra = tech_stack_list(project).size - 4 %>
+              <% if extra > 0 %>
+                <span class="text-xs text-ink-500">+<%= extra %></span>
+              <% end %>
+            </div>
+
+            <div class="mt-6 flex items-center justify-between">
+              <span class="text-sm font-medium text-rosewood-700">
+                View →
+              </span>
+
+              <% if project.published_at.present? %>
+                <span class="text-xs text-ink-500">
+                  <%= project.published_at.to_date.strftime("%b %Y") %>
+                </span>
+              <% end %>
+            </div>
+          <% end %>
+        <% end %>
+      </div>
+    </div>
+
+    <!-- Footer -->
+    <div class="mt-16 border-t border-sand-200 pt-8">
+      <p class="text-sm text-ink-600">
+        Want details? Each project links to a case study with context, decisions, and results.
+      </p>
+    </div>
+  </div>
+</div>

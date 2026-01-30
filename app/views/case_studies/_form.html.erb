@@ -1,0 +1,62 @@
+<%= form_with(model: case_study, class: "contents") do |form| %>
+  <% if case_study.errors.any? %>
+    <div id="error_explanation" class="bg-red-50 text-red-500 px-3 py-2 font-medium rounded-md mt-3">
+      <h2><%= pluralize(case_study.errors.count, "error") %> prohibited this case_study from being saved:</h2>
+
+      <ul class="diamond-list">
+        <% case_study.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="my-5">
+    <%= form.label :project_id %>
+    <%= form.text_field :project_id, class: ["block shadow-sm rounded-md border px-3 py-2 mt-2 w-full", {"border-gray-400 focus:outline-blue-600": case_study.errors[:project_id].none?, "border-red-400 focus:outline-red-600": case_study.errors[:project_id].any?}] %>
+  </div>
+
+  <div class="my-5">
+    <%= form.label :context %>
+    <%= form.textarea :context, rows: 4, class: ["block shadow-sm rounded-md border px-3 py-2 mt-2 w-full", {"border-gray-400 focus:outline-blue-600": case_study.errors[:context].none?, "border-red-400 focus:outline-red-600": case_study.errors[:context].any?}] %>
+  </div>
+
+  <div class="my-5">
+    <%= form.label :problem %>
+    <%= form.textarea :problem, rows: 4, class: ["block shadow-sm rounded-md border px-3 py-2 mt-2 w-full", {"border-gray-400 focus:outline-blue-600": case_study.errors[:problem].none?, "border-red-400 focus:outline-red-600": case_study.errors[:problem].any?}] %>
+  </div>
+
+  <div class="my-5">
+    <%= form.label :approach %>
+    <%= form.textarea :approach, rows: 4, class: ["block shadow-sm rounded-md border px-3 py-2 mt-2 w-full", {"border-gray-400 focus:outline-blue-600": case_study.errors[:approach].none?, "border-red-400 focus:outline-red-600": case_study.errors[:approach].any?}] %>
+  </div>
+
+  <div class="my-5">
+    <%= form.label :decisions %>
+    <%= form.textarea :decisions, rows: 4, class: ["block shadow-sm rounded-md border px-3 py-2 mt-2 w-full", {"border-gray-400 focus:outline-blue-600": case_study.errors[:decisions].none?, "border-red-400 focus:outline-red-600": case_study.errors[:decisions].any?}] %>
+  </div>
+
+  <div class="my-5">
+    <%= form.label :implementation %>
+    <%= form.textarea :implementation, rows: 4, class: ["block shadow-sm rounded-md border px-3 py-2 mt-2 w-full", {"border-gray-400 focus:outline-blue-600": case_study.errors[:implementation].none?, "border-red-400 focus:outline-red-600": case_study.errors[:implementation].any?}] %>
+  </div>
+
+  <div class="my-5">
+    <%= form.label :results %>
+    <%= form.textarea :results, rows: 4, class: ["block shadow-sm rounded-md border px-3 py-2 mt-2 w-full", {"border-gray-400 focus:outline-blue-600": case_study.errors[:results].none?, "border-red-400 focus:outline-red-600": case_study.errors[:results].any?}] %>
+  </div>
+
+  <div class="my-5">
+    <%= form.label :metrics %>
+    <%= form.textarea :metrics, rows: 4, class: ["block shadow-sm rounded-md border px-3 py-2 mt-2 w-full", {"border-gray-400 focus:outline-blue-600": case_study.errors[:metrics].none?, "border-red-400 focus:outline-red-600": case_study.errors[:metrics].any?}] %>
+  </div>
+
+  <div class="my-5">
+    <%= form.label :next_steps %>
+    <%= form.textarea :next_steps, rows: 4, class: ["block shadow-sm rounded-md border px-3 py-2 mt-2 w-full", {"border-gray-400 focus:outline-blue-600": case_study.errors[:next_steps].none?, "border-red-400 focus:outline-red-600": case_study.errors[:next_steps].any?}] %>
+  </div>
+
+  <div class="inline">
+    <%= form.submit class: "w-full sm:w-auto rounded-md px-3.5 py-2.5 bg-blue-600 hover:bg-blue-500 text-white inline-block font-medium cursor-pointer" %>
+  </div>
+<% end %>

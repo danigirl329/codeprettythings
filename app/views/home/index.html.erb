@@ -1,0 +1,110 @@
+<!-- app/views/home/index.html.erb (or wherever your homepage lives) -->
+<div class="bg-sand-50">
+  <div class="mx-auto max-w-6xl px-6 py-16 sm:py-20">
+    <div class="grid items-start gap-12 lg:grid-cols-12 lg:gap-10">
+      <!-- Left: Copy -->
+      <div class="lg:col-span-7">
+        <p class="text-sm font-medium text-rosewood-700">Code Pretty Things</p>
+
+        <h1 class="mt-4 text-4xl font-semibold tracking-tight text-ink-900 sm:text-5xl">
+          Hi, I’m Danielle.
+          <span class="block text-ink-900">I build clean, reliable Rails apps.</span>
+        </h1>
+
+        <p class="mt-5 text-base leading-relaxed text-ink-700 sm:text-lg">
+          I’m a senior full-stack Ruby on Rails engineer who enjoys making complicated systems feel simple —
+          whether that’s a ticketing platform, a CMS, or a small business website.
+        </p>
+
+        <!-- CTAs -->
+        <div class="mt-8 flex flex-wrap items-center gap-3">
+          <%= link_to "View work", projects_path,
+            class: "inline-flex items-center justify-center rounded-xl bg-rosewood-600 px-5 py-3 text-sm font-medium text-white shadow-sm hover:bg-rosewood-700 focus:outline-none focus:ring-2 focus:ring-rosewood-200" %>
+
+          <%= link_to "Get in touch", "https://linkedin.com/in/danigreaves", target: "_blank", rel: "noopener",
+            class: "inline-flex items-center justify-center rounded-xl bg-white px-5 py-3 text-sm font-medium text-ink-900 ring-1 ring-sand-200 hover:ring-sand-300 focus:outline-none focus:ring-2 focus:ring-rosewood-200" %>
+
+          <%= link_to "Github", "https://github.com/danigirl329", target: "_blank", rel: "noopener",
+            class: "inline-flex items-center justify-center rounded-xl bg-sand-100 px-5 py-3 text-sm font-medium text-ink-900 ring-1 ring-sand-200 hover:bg-sand-200 focus:outline-none focus:ring-2 focus:ring-rosewood-200" %>
+        </div>
+
+        <!-- Proof bar -->
+        <div class="mt-10 rounded-2xl bg-white p-5 ring-1 ring-sand-200">
+          <dl class="grid gap-4 sm:grid-cols-2">
+            <div class="flex items-start gap-3">
+              <ul class="diamond-list text-sm font-semibold text-ink-900">Experience
+                <li class="mt-1 text-sm text-ink-900">10+ years building</li>
+              </ul>
+            </div>
+
+            <div class="flex items-start gap-3">
+              <ul class="diamond-list text-sm font-semibold text-ink-900">Focus
+                <li class="mt-1 text-sm text-ink-900">Performance, reliability, maintainability</li>
+              </ul>
+            </div>
+
+            <div class="flex items-start gap-3">
+              <ul class="diamond-list text-sm font-semibold text-ink-900">Stack
+                <li class="mt-1 text-sm text-ink-900">Rails · Postgres · Sidekiq · Redis · AWS</li>
+              </ul>
+            </div>
+
+            <div class="flex items-start gap-3">
+              <ul class="diamond-list text-sm font-semibold text-ink-900">UI
+                <li class="mt-1 text-sm text-ink-900">Turbo + Stimulus for polished UX</li>
+              </ul>
+            </div>
+          </dl>
+        </div>
+      </div>
+
+      <!-- Right: Headshot + mini bio -->
+      <div class="lg:col-span-5">
+        <div class="rounded-2xl bg-white p-6 ring-1 ring-sand-200 shadow-soft">
+          <!-- Headshot -->
+          <div class="relative overflow-hidden ">
+            <%= image_tag "danielle_homepage.png",
+              alt: "Portrait of Danielle smiling at her desk",
+              class: "aspect-[3/4] w-full object-cover" %>
+          </div>
+
+          <!-- Short bio -->
+          <div class="mt-6">
+            <h2 class="text-sm font-semibold text-ink-900">A bit about me</h2>
+            <p class="mt-2 text-sm leading-relaxed text-ink-700">
+              I’ve spent the last decade building Ruby on Rails applications that people actually rely on —
+              from high-traffic ticketing platforms to small business websites that need to just work. I care
+              deeply about clean code, thoughtful interfaces, and systems that are easy to maintain long after
+              they’re launched.
+            </p>
+
+            <!-- Quick links -->
+            <div class="mt-5 flex flex-wrap gap-2">
+              <%= link_to "Projects", projects_path,
+                class: "inline-flex items-center rounded-full bg-sand-50 px-3 py-1.5 text-xs font-medium text-ink-800 ring-1 ring-sand-200 hover:ring-sand-300" %>
+              <%= link_to "Case studies", case_studies_path,
+                class: "inline-flex items-center rounded-full bg-sand-50 px-3 py-1.5 text-xs font-medium text-ink-800 ring-1 ring-sand-200 hover:ring-sand-300" %>
+              <%= link_to "LinkedIn", "https://www.linkedin.com/in/danigreaves",
+                class: "inline-flex items-center rounded-full bg-sand-50 px-3 py-1.5 text-xs font-medium text-ink-800 ring-1 ring-sand-200 hover:ring-sand-300",
+                target: "_blank", rel: "noopener" %>
+              <%= link_to "GitHub", "https://github.com/danigirl329",
+                class: "inline-flex items-center rounded-full bg-sand-50 px-3 py-1.5 text-xs font-medium text-ink-800 ring-1 ring-sand-200 hover:ring-sand-300",
+                target: "_blank", rel: "noopener" %>
+            </div>
+          </div>
+        </div>
+
+        <!-- Small “availability” badge (optional) -->
+        <div class="mt-4 rounded-2xl bg-sand-100 p-5 ring-1 ring-sand-200">
+          <p class="text-xs font-medium text-ink-600">Freelance</p>
+          <p class="mt-1 text-sm font-semibold text-ink-900">
+            Available for small Rails builds & ongoing maintenance.
+          </p>
+          <p class="mt-1 text-xs text-ink-600">
+            Prefer clear scopes, clean handoffs, and long-term relationships.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

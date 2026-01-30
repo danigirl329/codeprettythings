@@ -1,0 +1,38 @@
+<% content_for :title, "Case studies" %>
+
+<div class="w-full">
+  <div class="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
+    <h1 class="font-bold text-4xl">Case studies</h1>
+    <% if signed_in? %>
+      <%= link_to "New case study",
+        new_case_study_path,
+        class: "rounded-xl bg-rosewood-600 px-4 py-2 text-sm font-medium text-white hover:bg-rosewood-700 focus:outline-none focus:ring-2 focus:ring-rosewood-200" %>
+    <% end %>
+  </div>
+
+  <div id="case_studies" class="min-w-full divide-y divide-gray-200 space-y-5">
+    <% if @case_studies.any? %>
+      <% @case_studies.each do |case_study| %>
+        <div class="flex flex-col sm:flex-row justify-between items-center pb-5 sm:pb-0">
+          <%= render case_study %>
+          <div class="w-full sm:w-auto flex flex-wrap gap-2">
+            <%= link_to "Show", case_study,
+              class: "inline-flex items-center justify-center rounded-xl bg-sand-50 px-3.5 py-2.5 text-sm font-medium text-ink-800 ring-1 ring-sand-200 hover:bg-white" %>
+
+            <% if signed_in? %>
+              <%= link_to "Edit", edit_case_study_path(case_study),
+                class: "inline-flex items-center justify-center rounded-xl bg-white px-3.5 py-2.5 text-sm font-medium text-ink-900 ring-1 ring-sand-200 hover:ring-sand-300" %>
+              <%= button_to "Destroy", case_study,
+                method: :delete,
+                form_class: "contents",
+                class: "inline-flex items-center justify-center rounded-xl bg-rosewood-600 px-3.5 py-2.5 text-sm font-medium text-white hover:bg-rosewood-700 focus:outline-none focus:ring-2 focus:ring-rosewood-200",
+                data: { turbo_confirm: "Are you sure?" } %>
+            <% end %>
+          </div>
+        </div>
+      <% end %>
+    <% else %>
+      <p class="text-center my-10">No case studies found.</p>
+    <% end %>
+  </div>
+</div>

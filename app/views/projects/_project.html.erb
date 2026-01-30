@@ -1,0 +1,38 @@
+<div id="<%= dom_id project %>" class="w-full sm:w-auto my-5 space-y-5">
+  <div>
+    <strong class="block font-medium mb-1">Title:</strong>
+    <%= project.title %>
+  </div>
+  <div>
+    <strong class="block font-medium mb-1">Slug:</strong>
+    <%= project.slug %>
+  </div>
+  <div>
+    <strong class="block font-medium mb-1">Summary:</strong>
+    <%= project.summary %>
+  </div>
+  <div>
+    <strong class="block font-medium mb-1">Role:</strong>
+    <%= project.role %>
+  </div>
+  <div>
+    <strong class="block font-medium mb-1">Client:</strong>
+    <%= project.client %>
+  </div>
+  <div>
+    <strong class="block font-medium mb-1">Tech stack:</strong>
+    <%= project.tech_stack %>
+  </div>
+  <div>
+    <strong class="block font-medium mb-1">Results:</strong>
+    <%= project.results %>
+  </div>
+  <div>
+    <strong class="block font-medium mb-1">Featured:</strong>
+    <%= project.featured? ? "Yes" : "No" %>
+  </div>
+  <div>
+    <strong class="block font-medium mb-1">Published at:</strong>
+    <%= project.published_at %>
+  </div>
+</div>

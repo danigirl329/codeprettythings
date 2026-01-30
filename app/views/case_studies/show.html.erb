@@ -1,0 +1,209 @@
+<div class="min-h-screen bg-sand-50">
+  <div class="mx-auto max-w-6xl px-6 py-14">
+    <div class="mb-10">
+      <%= link_to "← Back to project", project_path(@case_study.project),
+        class: "text-sm font-medium text-rosewood-700 hover:text-rosewood-800" %>
+    </div>
+
+    <div class="grid gap-10 lg:grid-cols-12" data-controller="scrollspy">
+      <!-- Sticky Sidebar -->
+      <aside class="lg:col-span-3">
+        <div class="lg:sticky lg:top-8 rounded-2xl bg-white p-5 ring-1 ring-sand-200">
+          <p class="text-xs font-medium text-rosewood-700">Case study</p>
+          <h1 class="mt-2 text-lg font-semibold text-ink-900">
+            <%= @case_study.project.title %>
+          </h1>
+
+          <nav class="mt-5 space-y-1 text-sm" aria-label="On this page">
+            <%# Each link gets scrollspy styling via data targets %>
+            <%= link_to "#overview",
+              class: "block rounded-lg px-3 py-2 text-ink-700 hover:bg-sand-50",
+              data: { scrollspy_target: "link", section: "overview" } do %>
+              Overview
+            <% end %>
+
+            <%= link_to "#context",
+              class: "block rounded-lg px-3 py-2 text-ink-700 hover:bg-sand-50",
+              data: { scrollspy_target: "link", section: "context" } do %>
+              Context
+            <% end %>
+
+            <%= link_to "#problem",
+              class: "block rounded-lg px-3 py-2 text-ink-700 hover:bg-sand-50",
+              data: { scrollspy_target: "link", section: "problem" } do %>
+              Problem
+            <% end %>
+
+            <%= link_to "#approach",
+              class: "block rounded-lg px-3 py-2 text-ink-700 hover:bg-sand-50",
+              data: { scrollspy_target: "link", section: "approach" } do %>
+              Approach
+            <% end %>
+
+            <%= link_to "#decisions",
+              class: "block rounded-lg px-3 py-2 text-ink-700 hover:bg-sand-50",
+              data: { scrollspy_target: "link", section: "decisions" } do %>
+              Key decisions
+            <% end %>
+
+            <%= link_to "#implementation",
+              class: "block rounded-lg px-3 py-2 text-ink-700 hover:bg-sand-50",
+              data: { scrollspy_target: "link", section: "implementation" } do %>
+              Implementation
+            <% end %>
+
+            <%= link_to "#results",
+              class: "block rounded-lg px-3 py-2 text-ink-700 hover:bg-sand-50",
+              data: { scrollspy_target: "link", section: "results" } do %>
+              Results
+            <% end %>
+
+            <%= link_to "#metrics",
+              class: "block rounded-lg px-3 py-2 text-ink-700 hover:bg-sand-50",
+              data: { scrollspy_target: "link", section: "metrics" } do %>
+              Metrics
+            <% end %>
+
+            <%= link_to "#next-steps",
+              class: "block rounded-lg px-3 py-2 text-ink-700 hover:bg-sand-50",
+              data: { scrollspy_target: "link", section: "next-steps" } do %>
+              Next steps
+            <% end %>
+          </nav>
+
+          <% if signed_in? %>
+            <div class="mt-6 border-t border-sand-200 pt-5">
+              <%= link_to "Edit case study", edit_case_study_path(@case_study),
+                class: "inline-flex w-full items-center justify-center rounded-xl bg-rosewood-600 px-4 py-2 text-sm font-medium text-white hover:bg-rosewood-700 focus:outline-none focus:ring-2 focus:ring-rosewood-200" %>
+            </div>
+          <% end %>
+        </div>
+      </aside>
+
+      <!-- Content -->
+      <main class="lg:col-span-9">
+        <div class="rounded-2xl bg-white p-8 ring-1 ring-sand-200 shadow-soft">
+          <!-- Overview -->
+          <section id="overview" data-scrollspy-target="section" data-section="overview" class="scroll-mt-24">
+            <p class="text-xs font-medium text-rosewood-700">Overview</p>
+            <h2 class="mt-2 text-2xl font-semibold tracking-tight text-ink-900">What I shipped</h2>
+
+            <div class="mt-4 rounded-2xl bg-sand-50 p-6 ring-1 ring-sand-200">
+              <p class="text-sm text-ink-800">
+                <span class="font-medium"><%= @case_study.project.role.presence || "Full-stack" %></span>
+                <% if @case_study.project.client.present? %>
+                  · <span class="text-ink-700"><%= @case_study.project.client %></span>
+                <% end %>
+              </p>
+
+              <% if @case_study.project.summary.present? %>
+                <p class="mt-3 text-sm leading-relaxed text-ink-700">
+                  <%= @case_study.project.summary %>
+                </p>
+              <% end %>
+
+              <% tech = tech_stack_list(@case_study.project) %>
+              <% if tech.any? %>
+                <div class="mt-4 flex flex-wrap gap-2">
+                  <% tech.each do |tag| %>
+                    <span class="inline-flex items-center rounded-full bg-white px-2.5 py-1 text-xs font-medium text-ink-700 ring-1 ring-sand-200">
+                      <%= tag %>
+                    </span>
+                  <% end %>
+                </div>
+              <% end %>
+            </div>
+          </section>
+
+          <div class="my-10 h-px bg-sand-200"></div>
+
+          <!-- Context -->
+          <section id="context" data-scrollspy-target="section" data-section="context" class="scroll-mt-24">
+            <h3 class="text-lg font-semibold text-ink-900">Context</h3>
+            <div class="prose prose-sm max-w-none text-ink-800">
+              <%= simple_format(@case_study.context) %>
+            </div>
+          </section>
+
+          <div class="my-10 h-px bg-sand-200"></div>
+
+          <!-- Problem -->
+          <section id="problem" data-scrollspy-target="section" data-section="problem" class="scroll-mt-24">
+            <h3 class="text-lg font-semibold text-ink-900">Problem</h3>
+            <div class="prose prose-sm max-w-none text-ink-800">
+              <%= simple_format(@case_study.problem) %>
+            </div>
+          </section>
+
+          <div class="my-10 h-px bg-sand-200"></div>
+
+          <!-- Approach -->
+          <section id="approach" data-scrollspy-target="section" data-section="approach" class="scroll-mt-24">
+            <h3 class="text-lg font-semibold text-ink-900">Approach</h3>
+            <div class="prose prose-sm max-w-none text-ink-800">
+              <%= simple_format(@case_study.approach) %>
+            </div>
+          </section>
+
+          <div class="my-10 h-px bg-sand-200"></div>
+
+          <!-- Decisions -->
+          <section id="decisions" data-scrollspy-target="section" data-section="decisions" class="scroll-mt-24">
+            <h3 class="text-lg font-semibold text-ink-900">Key decisions</h3>
+            <div class="prose prose-sm max-w-none text-ink-800">
+              <%= simple_format(@case_study.decisions) %>
+            </div>
+          </section>
+
+          <div class="my-10 h-px bg-sand-200"></div>
+
+          <!-- Implementation -->
+          <section id="implementation" data-scrollspy-target="section" data-section="implementation" class="scroll-mt-24">
+            <h3 class="text-lg font-semibold text-ink-900">Implementation</h3>
+            <div class="prose prose-sm max-w-none text-ink-800">
+              <%= simple_format(@case_study.implementation) %>
+            </div>
+          </section>
+
+          <div class="my-10 h-px bg-sand-200"></div>
+
+          <!-- Results -->
+          <section id="results" data-scrollspy-target="section" data-section="results" class="scroll-mt-24">
+            <h3 class="text-lg font-semibold text-ink-900">Results</h3>
+            <div class="prose prose-sm max-w-none text-ink-800">
+              <%= simple_format(@case_study.results) %>
+            </div>
+          </section>
+
+          <div class="my-10 h-px bg-sand-200"></div>
+
+          <!-- Metrics -->
+          <section id="metrics" data-scrollspy-target="section" data-section="metrics" class="scroll-mt-24">
+            <h3 class="text-lg font-semibold text-ink-900">Metrics</h3>
+            <div class="prose prose-sm max-w-none text-ink-800">
+              <%= simple_format(@case_study.metrics) %>
+            </div>
+          </section>
+
+          <div class="my-10 h-px bg-sand-200"></div>
+
+          <!-- Next steps -->
+          <section id="next-steps" data-scrollspy-target="section" data-section="next-steps" class="scroll-mt-24">
+            <h3 class="text-lg font-semibold text-ink-900">What I’d do next</h3>
+            <div class="prose prose-sm max-w-none text-ink-800">
+              <%= simple_format(@case_study.next_steps) %>
+            </div>
+          </section>
+        </div>
+
+        <div class="mt-8 flex flex-wrap gap-3">
+          <%= link_to "Back to project", project_path(@case_study.project),
+            class: "inline-flex items-center rounded-xl bg-white px-5 py-2.5 text-sm font-medium text-ink-900 ring-1 ring-sand-200 hover:ring-sand-300" %>
+
+          <%= link_to "All projects", projects_path,
+            class: "inline-flex items-center rounded-xl bg-white px-5 py-2.5 text-sm font-medium text-ink-900 ring-1 ring-sand-200 hover:ring-sand-300" %>
+        </div>
+      </main>
+    </div>
+  </div>
+</div>

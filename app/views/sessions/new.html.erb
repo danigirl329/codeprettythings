@@ -1,0 +1,38 @@
+<% content_for :title, "Sign in" %>
+
+<div class="mx-auto w-full max-w-md">
+  <div class="rounded-2xl bg-white p-8 ring-1 ring-sand-200 shadow-soft">
+    <div class="text-center">
+      <p class="text-sm font-medium uppercase tracking-wide text-rosewood-600">Admin access</p>
+      <h1 class="mt-2 text-2xl font-semibold text-ink-900">Sign in to manage projects</h1>
+      <p class="mt-2 text-sm text-ink-700">
+        Use the credentials you created in the console. Only signed-in users can create or edit content.
+      </p>
+    </div>
+
+    <%= form_with url: session_path, scope: :session, class: "mt-8 space-y-6" do |form| %>
+      <div>
+        <%= form.label :email, class: "block text-sm font-medium text-ink-800" %>
+        <%= form.email_field :email,
+          class: "mt-1 w-full rounded-xl border border-sand-200 bg-sand-50 px-4 py-2 text-sm text-ink-900 focus:border-rosewood-300 focus:outline-none focus:ring-2 focus:ring-rosewood-200",
+          autocomplete: "email",
+          required: true %>
+      </div>
+
+      <div>
+        <div class="flex items-center justify-between">
+          <%= form.label :password, class: "text-sm font-medium text-ink-800" %>
+        </div>
+        <%= form.password_field :password,
+          class: "mt-1 w-full rounded-xl border border-sand-200 bg-sand-50 px-4 py-2 text-sm text-ink-900 focus:border-rosewood-300 focus:outline-none focus:ring-2 focus:ring-rosewood-200",
+          autocomplete: "current-password",
+          required: true %>
+      </div>
+
+      <div>
+        <%= form.button "Sign in",
+          class: "w-full rounded-xl bg-rosewood-600 px-4 py-2 text-sm font-medium text-white transition hover:bg-rosewood-700 focus:outline-none focus:ring-2 focus:ring-rosewood-200" %>
+      </div>
+    <% end %>
+  </div>
+</div>
