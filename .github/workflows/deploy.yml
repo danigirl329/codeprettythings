@@ -35,6 +35,14 @@ jobs:
             # Optional: cleanup old images
             docker image prune -f
 
-            # Basic health check
-            curl -fsS http://127.0.0.1:3000 >/dev/null
-            echo "Deploy OK"
+            # Basic health check (retry for up to 2 minutes)
+            for i in $(seq 1 24); do
+              if curl -fsS http://127.0.0.1:3000 >/dev/null; then
+                echo "Deploy OK"
+                exit 0
+              fi
+              sleep 5
+            done
+
+            echo "Deploy failed: app did not become healthy in time"
+            exit 1
