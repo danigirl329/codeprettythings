@@ -13,6 +13,9 @@ RUN apt-get update -qq && \
     apt-get install --no-install-recommends -y curl libjemalloc2 libvips sqlite3 && \
     rm -rf /var/lib/apt/lists /var/cache/apt/archives
 
+#Copy .env file
+COPY .env .env
+
 # Set production environment
 ENV RAILS_ENV="production" \
     BUNDLE_DEPLOYMENT="1" \
@@ -25,7 +28,7 @@ FROM base AS build
 # Install packages needed to build gems + optional JS tooling
 RUN apt-get update -qq && \
     apt-get install --no-install-recommends -y \
-      build-essential git libyaml-dev pkg-config \
+      build-essential git libpq-dev libyaml-dev pkg-config \
       nodejs npm && \
     npm install -g yarn && \
     rm -rf /var/lib/apt/lists /var/cache/apt/archives
