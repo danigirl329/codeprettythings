@@ -24,6 +24,8 @@ services:
       SECRET_KEY_BASE: ${SECRET_KEY_BASE}
     depends_on:
       - db
+    ports:
+      - "127.0.0.1:3000:3000"
     expose:
       - "3000"
     restart: unless-stopped
