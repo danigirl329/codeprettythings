@@ -1,0 +1,32 @@
+services:
+  db:
+    image: postgres:16
+    container_name: myapp_db
+    environment:
+      POSTGRES_DB: myapp_production
+      POSTGRES_USER: myapp
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    restart: unless-stopped
+
+  web:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: myapp_web
+    environment:
+      RAILS_ENV: production
+      RACK_ENV: production
+      DATABASE_URL: postgres://myapp:${POSTGRES_PASSWORD}@db:5432/myapp_production
+      RAILS_LOG_TO_STDOUT: "1"
+      RAILS_SERVE_STATIC_FILES: "1"
+      SECRET_KEY_BASE: ${SECRET_KEY_BASE}
+    depends_on:
+      - db
+    expose:
+      - "3000"
+    restart: unless-stopped
+
+volumes:
+  postgres_data:
