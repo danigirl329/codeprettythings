@@ -19,7 +19,7 @@ gem "stimulus-rails"
 # Use Tailwind CSS [https://github.com/rails/tailwindcss-rails]
 gem "tailwindcss-rails"
 # Newer standalone compilers fail to load this app's JavaScript configuration.
-gem "tailwindcss-ruby", "4.1.18"
+gem "tailwindcss-ruby", "4.3.3"
 # Build JSON APIs with ease [https://github.com/rails/jbuilder]
 gem "jbuilder"
 
